@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="LibrarySystem.BooksList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibrarySystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFC5C5C5">
+        <Canvas x:Name="layoutRoot">
+
+            <StackPanel x:Name="Panel" Margin="0,0,0,800" Background="#FF587ACC"/>
+            <TextBox x:Name="BookTitleTxt" HorizontalAlignment="Left" Height="53" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="230"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Height="47" Width="107" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="240"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Publish Date" VerticalAlignment="Top" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="310"/>
+            <Button x:Name="btnAddBook" Content="Add Book" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="25" Canvas.Top="880" Click="btnAddBook_Click" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="btnGoBackBooksList" Content="Home" Height="52" Width="88" Click="btnGoBackBooksList_Click" Canvas.Left="25" Canvas.Top="162" VerticalAlignment="Top"/>
+            <TextBlock Height="95" TextWrapping="Wrap" Text="Library Management System Books List" Width="548" TextAlignment="Center" FontSize="35" FontWeight="Bold" HorizontalAlignment="Left" Canvas.Left="485" Canvas.Top="10" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Author" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="450" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="ISBNTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="370"/>
+            <TextBox x:Name="AuthorTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="440" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="ISBN" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="380" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="PublisherTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="510" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Publisher" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="520" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="EditionTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="580" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Edition" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="590" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Genre" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="660" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="GenreTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="650" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="btnUpdateBook" Content="Update Book" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="175" Canvas.Top="880" Click="btnUpdateBook_Click" VerticalAlignment="Top"/>
+            <Button x:Name="btnDeleteBook" Content="Delete Book" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="325" Canvas.Top="880" Click="btnDeleteBook_Click"/>
+            <TextBlock Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="Enter Book ID to Update/Delete it" Canvas.Top="919" Width="268" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" TextAlignment="Center" FontSize="15"/>
+            <TextBox x:Name="txtBoxID" Height="33" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="950" Width="268" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+            <ComboBox x:Name="comboSort" Width="166" Background="#66F50000" PlaceholderText="Sort By" FontWeight="Bold" Canvas.Left="215" Canvas.Top="162" SelectionChanged="comboSort_SelectionChanged" Height="52" VerticalAlignment="Center">
+                <ComboBoxItem Content="Title A-Z"/>
+                <ComboBoxItem Content="Title Z-A"/>
+                <ComboBoxItem Content="Publish Date - Newest First"/>
+                <ComboBoxItem Content="Publish Date - Oldest First"/>
+                <ComboBoxItem Content="Actual Price - Cheapest"/>
+                <ComboBoxItem Content="Actual Price - Most Expensive"/>
+            </ComboBox>
+            <CalendarDatePicker x:Name="CalendarDtPck" Canvas.Left="215" Canvas.Top="300" Width="166" Height="53" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Price" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="730" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="PriceTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="720" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Height="25" Canvas.Left="485" TextWrapping="Wrap" Text="The ID of the Selected Book for Easy Copying" Canvas.Top="919" Width="340" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Red"/>
+            <TextBox x:Name="SelectedBookIdTxt" Height="33" Canvas.Left="485" TextWrapping="Wrap" Text="" Canvas.Top="950" Width="350" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Height="43" Canvas.Left="996" TextWrapping="Wrap" Text="Enter the ID of the book you want to create discount for" Canvas.Top="858" Width="268" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtBoxIDDis" Height="33" Canvas.Left="996" TextWrapping="Wrap" Text="" Canvas.Top="907" Width="268" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtDisLevel" Height="33" Canvas.Left="1335" TextWrapping="Wrap" Text="" Canvas.Top="907" Width="74" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Height="43" Canvas.Left="1308" TextWrapping="Wrap" Text="Enter the discount level (0-99)" Canvas.Top="858" Width="139" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="btnCreateDis" Content="Create Discount" RenderTransformOrigin="2.12,1.344" Width="129" FontWeight="Bold" Canvas.Left="996" Canvas.Top="950" Click="btnCreateDis_Click"/>
+            <Button x:Name="btnExport" Content="Export" RenderTransformOrigin="2.12,1.344" Width="150" FontWeight="Bold" Canvas.Left="1055" Canvas.Top="82" Click="btnExport_Click" VerticalAlignment="Top"/>
+        </Canvas>
+        <StackPanel 
+        x:Name="stack_panel1" 
+        Orientation="Vertical"
+        Background="Cornsilk"
+        Padding="50"
+        HorizontalAlignment="Center" VerticalAlignment="Top" Height="704" Width="534" Margin="483,142,483,154">
+        </StackPanel>
+        <ListView
+            x:Name="ListView1" 
+            Header=" Choose a book to see the full details"
+            SelectionChanged="ListView1_SelectionChanged"
+            ScrollViewer.HorizontalScrollMode="Enabled" Margin="483,142,483,154" Width="534" Height="704">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                            Text="{Binding Title}"
+                            FontWeight="Black"
+                            />
+                        <TextBlock
+                            Text="{Binding Author}"
+                            FontStyle="Italic"
+                            />
+                        <TextBlock
+                            Text="{Binding Genre}"
+                            FontWeight="Black"
+                            Foreground="SpringGreen"
+                            />
+                        <TextBlock
+                            Text="{Binding ActualPrice}"
+                            FontWeight="Black"
+                            Foreground="Crimson"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Margin="1286,142,38,168">
+            <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+            <TextBox x:Name="FilterByTitle" Width="150" Header="Title" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByISBN" Width="150" Header="ISBN" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByAuthor" Width="150" Header="Author" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByPublisher" Width="150" Header="Publisher" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByEdition" Width="150" Header="Edition" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByGenre" Width="150" Header="Genre" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByPrice" Width="150" Header="Price" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByActualPrice" Width="150" Header="Actual Price" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            <TextBox x:Name="FilterByDiscountLevel" Width="150" Header="Discount Level" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+        </StackPanel>
+    </Grid>
+</Page>

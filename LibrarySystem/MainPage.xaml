@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="LibrarySystem.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibrarySystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FF0E686F" Width="1500" Height="1000">
+        <StackPanel HorizontalAlignment="Left" Height="400" Margin="567,322,0,0" VerticalAlignment="Top" Width="419" Background="#FFE6A28E"/>
+        <TextBlock HorizontalAlignment="Left" Margin="514,137,0,0" TextWrapping="Wrap" Text="Library Management System Login Form" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Height="103" Width="563" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="567,353,0,0" TextWrapping="Wrap" Text="Enter Your Details" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Height="53" Width="411" TextAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" Text="Username" TextAlignment="Left" FontSize="18" FontWeight="Bold" Margin="586,459,796,495" HorizontalAlignment="Center"/>
+        <TextBox x:Name="UsernameTxt" TextWrapping="Wrap" Text="" BorderBrush="#66000000" Margin="762,446,0,501" FontSize="16" HorizontalAlignment="Left" Width="142" Height="53"/>
+        <TextBlock TextWrapping="Wrap" Text="Password" TextAlignment="Left" FontSize="18" FontWeight="Bold" Margin="586,529,796,425" HorizontalAlignment="Center"/>
+        <PasswordBox x:Name="PassTxt" HorizontalAlignment="Left" Margin="762,516,0,431"  VerticalAlignment="Top" Width="142" Height="53"/>
+        <Button x:Name="btnLogin" Content="Login" Height="68" Width="234" Margin="645,632,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="35" Background="#33000000" Click="btnLogin_Click"/>
+    </Grid>
+</Page>

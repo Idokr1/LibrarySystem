@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="LibrarySystem.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibrarySystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FF0E686F">
+        <TextBlock HorizontalAlignment="Left" Margin="470,0,0,0" TextWrapping="Wrap" Text="Library Management System Home Page" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Height="103" Width="563" TextAlignment="Center"/>
+        <Button x:Name="BtnBooks" Content="Books List" Margin="80,120,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Click="BtnBooks_Click"/>
+        <Button x:Name="BtnJournals" Content="Journals List" Margin="80,220,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Click="BtnJournals_Click"/>
+        <Button x:Name="BtnIssueReturnBooks" Margin="80,320,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Content="Issue &amp; Return Books" Click="BtnIssueReturnBooks_Click"/>
+        <Button x:Name="BtnIssueReturnJournals" Margin="80,420,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Content="Issue &amp; Return Journals" Click="BtnIssueReturnJournals_Click"/>
+        <Button x:Name="BtnEmployees" Margin="80,520,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Content="Employees List" Click="BtnEmployees_Click"/>
+        <Button x:Name="BtnCustomers" Margin="80,620,0,0" Height="65" Width="270" Background="#CCB91414" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Content="Customers List" Click="BtnCustomers_Click"/>
+        <Button x:Name="BtnLogout" Content="Logout" Margin="1189,120,0,0" Height="65" Width="270" Background="#CCB99090" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" Click="BtnLogout_Click"/>
+    </Grid>
+</Page>
