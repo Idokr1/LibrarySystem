@@ -3,24 +3,13 @@ using Library.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
-using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -30,14 +19,14 @@ namespace LibrarySystem
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    
+
 
     public sealed partial class BooksList : Page
     {
         public BooksList()
         {
             this.InitializeComponent();
-            this.btnGoBackBooksList.Click += btnGoBackBooksList_Click;            
+            this.btnGoBackBooksList.Click += btnGoBackBooksList_Click;
             ListView1.ItemsSource = DataMock.Instance.BookItemsFiltered;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,7 +38,7 @@ namespace LibrarySystem
             if (this.Frame.CanGoBack)
                 this.Frame.GoBack();
         }
-        private async void btnAddBook_Click(object sender, RoutedEventArgs e) 
+        private async void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
             if (DataMock.Instance.loggedEmp.AllowedToAddDeleteItem == false)
             {
@@ -64,7 +53,7 @@ namespace LibrarySystem
                     if (ISBNTxt.Text.Length != 17)
                         throw new IsbnException("ISBN contains 17 characters - 13 numbers and 4 dashes");
                     if (!Book.BookGenres.Contains(GenreTxt.Text))
-                        throw new GenreException("The Genre you entered isn't one of the known genres");                    
+                        throw new GenreException("The Genre you entered isn't one of the known genres");
 
                     string title = BookTitleTxt.Text;
                     string pubDateString = CalendarDtPck.Date.ToString();
@@ -80,7 +69,7 @@ namespace LibrarySystem
                     DataMock.Instance.BookItems.Add(newBook);
                     UpdatingListView();
                 }
-                catch(FormatException e1)
+                catch (FormatException e1)
                 {
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
@@ -100,7 +89,7 @@ namespace LibrarySystem
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }         
+            }
         }
         private async void btnUpdateBook_Click(object sender, RoutedEventArgs e)
         {
@@ -144,7 +133,7 @@ namespace LibrarySystem
                                 if (ISBNTxt.Text.Length != 17)
                                     throw new IsbnException("ISBN contains 17 characters - 13 numbers and 4 dashes");
                                 newISBN = ISBNTxt.Text;
-                            }                                
+                            }
                             else
                                 newISBN = oldISBN;
 
@@ -162,7 +151,7 @@ namespace LibrarySystem
                                 if (!Book.BookGenres.Contains(GenreTxt.Text))
                                     throw new GenreException("The Genre you entered isn't one of the known genres");
                                 newGenre = GenreTxt.Text;
-                            }                                
+                            }
                             else
                                 newGenre = oldGenre;
 
@@ -231,14 +220,14 @@ namespace LibrarySystem
                             UpdatingListView();
                             break;
                         }
-                    }    
+                    }
                 }
                 catch (FormatException e1)
                 {
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }            
+            }
         }
         private async void btnCreateDis_Click(object sender, RoutedEventArgs e)
         {
@@ -277,7 +266,7 @@ namespace LibrarySystem
                             UpdatingListView();
                             break;
                         }
-                    }                    
+                    }
                 }
                 catch (FormatException e1)
                 {
@@ -291,7 +280,7 @@ namespace LibrarySystem
             try
             {
                 ListView listView = sender as ListView;
-                Book selectedBook = listView.SelectedItem as Book;                
+                Book selectedBook = listView.SelectedItem as Book;
                 if (selectedBook != null)
                 {
                     SelectedBookIdTxt.Text = $"{selectedBook.ID}";
@@ -306,11 +295,11 @@ namespace LibrarySystem
                 }
                 listView.SelectedItem = null;
             }
-            catch(NullReferenceException e1)
+            catch (NullReferenceException e1)
             {
                 MessageDialog d1 = new MessageDialog(e1.Message);
                 d1.ShowAsync();
-            }            
+            }
         }
         private void comboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -320,13 +309,13 @@ namespace LibrarySystem
                 DataMock.Instance.BookItemsFiltered = new ObservableCollection<Book>(DataMock.Instance.BookItems);
                 ListView1.ItemsSource = DataMock.Instance.BookItemsFiltered;
             }
-            if(comboSort.SelectedIndex == 1)
+            if (comboSort.SelectedIndex == 1)
             {
                 DataMock.Instance.BookItems = new ObservableCollection<Book>(DataMock.Instance.BookItems.OrderByDescending(i => i.Title));
                 DataMock.Instance.BookItemsFiltered = new ObservableCollection<Book>(DataMock.Instance.BookItems);
                 ListView1.ItemsSource = DataMock.Instance.BookItemsFiltered;
             }
-            if(comboSort.SelectedIndex == 2)
+            if (comboSort.SelectedIndex == 2)
             {
                 DataMock.Instance.BookItems = new ObservableCollection<Book>(DataMock.Instance.BookItems.OrderByDescending(i => i.PublishDate));
                 DataMock.Instance.BookItemsFiltered = new ObservableCollection<Book>(DataMock.Instance.BookItems);
@@ -356,7 +345,7 @@ namespace LibrarySystem
             var filtered = DataMock.Instance.BookItems.Where(book => Filter(book));
             Remove_NonMatching(filtered);
             AddBack_Books(filtered);
-        }        
+        }
         private void OnFilterChanged(object sender, TextChangedEventArgs args)
         {
             var filtered = DataMock.Instance.BookItems.Where(book => Filter(book));
@@ -381,7 +370,7 @@ namespace LibrarySystem
                    book.ActualPrice.ToString().EndsWith(FilterByActualPrice.Text, StringComparison.InvariantCultureIgnoreCase) &&
                    book.DiscountLevel.ToString().StartsWith(FilterByDiscountLevel.Text, StringComparison.InvariantCultureIgnoreCase) &&
                    book.DiscountLevel.ToString().Contains(FilterByDiscountLevel.Text, StringComparison.InvariantCultureIgnoreCase) &&
-                   book.DiscountLevel.ToString().EndsWith(FilterByDiscountLevel.Text, StringComparison.InvariantCultureIgnoreCase);               
+                   book.DiscountLevel.ToString().EndsWith(FilterByDiscountLevel.Text, StringComparison.InvariantCultureIgnoreCase);
         }
         private void Remove_NonMatching(IEnumerable<Book> filteredData)
         {
@@ -415,8 +404,8 @@ namespace LibrarySystem
                     $"{book.ActualPrice}\t{book.DiscountLevel}\t{book.ID}\t\n";
             }
             var savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;            
-            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });            
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
             savePicker.SuggestedFileName = "ListView Content";
 
             StorageFile file = await savePicker.PickSaveFileAsync();
@@ -425,13 +414,13 @@ namespace LibrarySystem
                 CachedFileManager.DeferUpdates(file);
                 await FileIO.WriteTextAsync(file, listViewContent);
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-                if (status == FileUpdateStatus.Complete)                
-                    tb.Text = "File " + file.Name + " was saved.";                
-                else                
-                    tb.Text = "File " + file.Name + " couldn't be saved.";                
+                if (status == FileUpdateStatus.Complete)
+                    tb.Text = "File " + file.Name + " was saved.";
+                else
+                    tb.Text = "File " + file.Name + " couldn't be saved.";
             }
-            else            
-                tb.Text = "Operation cancelled.";            
+            else
+                tb.Text = "Operation cancelled.";
         }
     }
 }

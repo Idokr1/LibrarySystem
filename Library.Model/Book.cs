@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Model
 {
@@ -10,7 +7,7 @@ namespace Library.Model
     /// class representing book handled by the library
     /// </summary>
     public class Book : LibraryItem
-    {        
+    {
         public string ISBN { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }

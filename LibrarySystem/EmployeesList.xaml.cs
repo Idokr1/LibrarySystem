@@ -1,20 +1,11 @@
 ﻿using Library.DAL;
 using Library.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -119,7 +110,7 @@ namespace LibrarySystem
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }            
+            }
         }
         private async void btnUpdateEmp_Click(object sender, RoutedEventArgs e)
         {
@@ -162,7 +153,7 @@ namespace LibrarySystem
                                 if (EmpPhoneTxt.Text.Length != 10)
                                     throw new PhoneNumberException("A phone number has 10 numbers");
                                 newPhone = EmpPhoneTxt.Text;
-                            }                                
+                            }
                             else
                                 newPhone = oldPhone;
 
@@ -171,7 +162,7 @@ namespace LibrarySystem
                                 if (EmpUsernameTxt.Text.Length < 6)
                                     throw new TooShortPassException("Too short username - At least 6 characters");
                                 newUsername = EmpUsernameTxt.Text;
-                            }                                
+                            }
                             else
                                 newUsername = oldUsername;
 
@@ -180,7 +171,7 @@ namespace LibrarySystem
                                 if (EmpPassTxt.Text.Length < 6)
                                     throw new TooShortPassException("Too short password - At least 6 characters");
                                 newPass = EmpPassTxt.Text;
-                            }                                
+                            }
                             else
                                 newPass = oldPass;
 
@@ -234,7 +225,7 @@ namespace LibrarySystem
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }            
+            }
         }
         private async void btnDeleteEmp_Click(object sender, RoutedEventArgs e)
         {
@@ -254,15 +245,15 @@ namespace LibrarySystem
                         {
                             DataMock.Instance.Employees.RemoveAt(i);
                             break;
-                        }                            
-                    }                        
+                        }
+                    }
                 }
                 catch (FormatException e1)
                 {
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }            
+            }
         }
         private void ListView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

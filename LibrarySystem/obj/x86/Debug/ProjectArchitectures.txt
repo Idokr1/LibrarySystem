@@ -1,0 +1,4 @@
+C:\Users\User\Dropbox\4 - Business\Programming Workspace\Sela\Courses\8- Project O-O Design And .NET Framework - Elizur\LibrarySystem\Library.DAL\Library.DAL.csproj;x86
+C:\Users\User\Dropbox\4 - Business\Programming Workspace\Sela\Courses\8- Project O-O Design And .NET Framework - Elizur\LibrarySystem\Library.Model\Library.Model.csproj;x86
+C:\Users\User\Dropbox\4 - Business\Programming Workspace\Sela\Courses\8- Project O-O Design And .NET Framework - Elizur\LibrarySystem\Library.Model\Library.Model.csproj;x86
+C:\Users\User\Dropbox\4 - Business\Programming Workspace\Sela\Courses\8- Project O-O Design And .NET Framework - Elizur\LibrarySystem\LibrarySystem\Library.UI.csproj;x86

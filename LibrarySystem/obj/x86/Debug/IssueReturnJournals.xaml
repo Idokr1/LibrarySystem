@@ -1,0 +1,189 @@
+﻿<Page
+    x:Class="LibrarySystem.IssueReturnJournals"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibrarySystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFC5C5C5">
+        <Canvas x:ConnectionId='2' x:Name="layoutRoot1">
+            <Button x:ConnectionId='15' x:Name="btnGoBackJournals" Content="Home" Height="52" Width="88" Canvas.Left="17" Canvas.Top="74"                                />
+            <TextBlock Height="25" Canvas.Left="25" TextWrapping="Wrap" Text="Enter Journal ID you want to issue" Canvas.Top="152" Width="250" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='16' x:Name="txtBoxID" Height="33" Canvas.Left="25" TextWrapping="Wrap" Text="" Canvas.Top="183" Width="264" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:ConnectionId='17' x:Name="btnIssueJournal" Content="Issue Journal" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="21" Canvas.Top="473" VerticalAlignment="Top"                              />
+            <Button x:ConnectionId='18' x:Name="btnReturnJournal" Content="Return Journal" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="169" Canvas.Top="473" HorizontalAlignment="Center" VerticalAlignment="Top"                               />
+            <TextBlock Height="95" TextWrapping="Wrap" Text="Library Management System Issue &amp; Return Journals" Width="548" TextAlignment="Center" FontSize="35" FontWeight="Bold" Canvas.Left="485" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Height="25" Canvas.Left="14" TextWrapping="Wrap" Text="The ID of the Selected Journal for Easy Copying" Canvas.Top="677" Width="271" FontWeight="Bold" TextAlignment="Center" FontSize="12" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='19' x:Name="SelectedJournalIdTxt" Height="33" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="708" Width="279" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ComboBox x:ConnectionId='20' x:Name="comboSort" Width="142" Background="#66F50000" PlaceholderText="Sort By" FontWeight="Bold" Canvas.Left="351" Canvas.Top="110"                                               Height="52" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Title A-Z"/>
+                <ComboBoxItem Content="Title Z-A"/>
+                <ComboBoxItem Content="Publish Date - Newest First"/>
+                <ComboBoxItem Content="Publish Date - Oldest First"/>
+                <ComboBoxItem Content="Actual Price - Cheapest"/>
+                <ComboBoxItem Content="Actual Price - Most Expensive"/>
+                <ComboBoxItem Content="The Most Frequent"/>
+                <ComboBoxItem Content="The Least Frequent"/>
+            </ComboBox>
+            <TextBlock Height="40" Canvas.Left="25" TextWrapping="Wrap" Text="Enter the Cust ID you want to issue a journal" Canvas.Top="233" Width="245" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='21' x:Name="txtBoxIDCust" Height="33" Canvas.Left="25" TextWrapping="Wrap" Text="" Canvas.Top="281" Width="263" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Height="39" Canvas.Left="14" TextWrapping="Wrap" Text="The ID of the Selected Customer for Easy Copying" Canvas.Top="763" Width="271" FontWeight="Bold" TextAlignment="Center" FontSize="12" Foreground="#FF013FFF" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='22' x:Name="SelectedCustIdTxt" Height="33" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="810" Width="279" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Issue Date" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="17" Canvas.Top="343" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <CalendarDatePicker x:ConnectionId='23' x:Name="CalendarDtPck" Canvas.Left="169" Canvas.Top="333" Width="166" Height="53" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Return Date" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="17" Canvas.Top="413" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <CalendarDatePicker x:ConnectionId='24' x:Name="CalendarDtPckReturn" Canvas.Left="169" Canvas.Top="403" Width="166" Height="53" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Canvas>
+        <StackPanel x:ConnectionId='3' 
+        x:Name="stack_panel1" 
+        Orientation="Vertical"
+        Background="Cornsilk"
+        Padding="50"
+        HorizontalAlignment="Center" VerticalAlignment="Top" Height="666" Width="320" Margin="306,180,794,154">
+        </StackPanel>
+        <ListView x:ConnectionId='4'
+            x:Name="ListView3" 
+            Header=" The list of our available journals"
+                                                         
+            ScrollViewer.HorizontalScrollMode="Enabled" Margin="306,180,794,154" Width="320" Height="666">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                            Text="{Binding Title}"
+                            FontWeight="Black"
+                            />
+                        <TextBlock
+                            Text="{Binding Editor}"
+                            FontStyle="Italic"
+                            />
+                        <TextBlock
+                            Text="{Binding Genre}"
+                            FontWeight="Black"
+                            Foreground="SpringGreen"
+                            />
+                        <TextBlock
+                            Text="{Binding ActualPrice}"
+                            FontWeight="Black"
+                            Foreground="Crimson"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel x:ConnectionId='5' 
+            x:Name="stack_panel2" 
+            Orientation="Vertical"
+            Background="Cornsilk"
+            Padding="50"
+            HorizontalAlignment="Center"  VerticalAlignment="Top" Height="666" Width="300" Margin="700,180,479,154">
+        </StackPanel>
+        <ListView x:ConnectionId='6'
+                x:Name="ListView4" 
+                Header=" The history of issued journals in the library:"
+                                                             
+                ScrollViewer.HorizontalScrollMode="Enabled" Width="300" Height="666" Margin="700,180,479,154">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                                Text="{Binding Title}"
+                                FontWeight="Black"
+                            />
+                        <TextBlock
+                                Text="{Binding LenderName}"
+                                FontStyle="Italic"
+                            />
+                        <TextBlock
+                                Text="{Binding IssueDate}"
+                                FontWeight="Black"
+                            />
+                        <TextBlock
+                                Text="{Binding ActualPrice}"
+                                FontWeight="Black"
+                                Foreground="Crimson"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel x:ConnectionId='7' 
+            x:Name="stack_panel3" 
+            Orientation="Vertical"
+            Background="Cornsilk"
+            Padding="50"
+            HorizontalAlignment="Center" VerticalAlignment="Top" Height="287" Width="300" Margin="1056,180,144,533">
+        </StackPanel>
+        <ListView x:ConnectionId='8'
+            x:Name="ListView5" 
+            Header=" Choose a Customer to see the full details:"
+                                                         
+            ScrollViewer.HorizontalScrollMode="Enabled" Height="287" Width="300" Margin="1056,180,144,533">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                            Text="{Binding Name}"
+                            FontWeight="Black"
+                            />
+                        <TextBlock
+                            Text="{Binding PhoneNumber}"
+                            FontStyle="Italic"
+                            />
+                        <TextBlock
+                                Text="{Binding Balance}"
+                                FontWeight="Black"
+                                Foreground="SpringGreen"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel x:ConnectionId='9' 
+            x:Name="stack_panel4" 
+            Orientation="Vertical"
+            Background="Cornsilk"
+            Padding="50"
+            HorizontalAlignment="Center" VerticalAlignment="Top" Height="317" Width="300" Margin="1056,529,144,154">
+        </StackPanel>
+        <ListView x:ConnectionId='10'
+                x:Name="ListView6" 
+                Header=" Journals borrowed at the moment:"
+                                                             
+                ScrollViewer.HorizontalScrollMode="Enabled" Height="317" Width="300" Margin="1056,529,144,154">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                                Text="{Binding Title}"
+                                FontWeight="Black"
+                            />
+                        <TextBlock
+                                Text="{Binding LenderName}"
+                                FontStyle="Italic"
+                            />
+                        <TextBlock
+                                Text="{Binding IssueDate}"
+                                FontWeight="Black"
+                            />
+                        <TextBlock
+                                Text="{Binding ReturnDate}"
+                                FontWeight="Black"
+                                Foreground="Crimson"
+                            />
+                        <TextBlock
+                                Text="{Binding isReturnLate}"
+                                FontWeight="Black"
+                                Foreground="Blue"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
+

@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="LibrarySystem.CustomersList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibrarySystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFC5C5C5">
+        <Canvas x:ConnectionId='2' x:Name="layoutRoot1">
+
+            <StackPanel x:ConnectionId='6' x:Name="Panel" Margin="0,0,0,800" Background="#FF587ACC"/>
+            <TextBox x:ConnectionId='7' x:Name="CustPhoneTxt" HorizontalAlignment="Left" Height="53" Margin="215,300,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166" BorderBrush="#66000000"/>
+            <TextBlock HorizontalAlignment="Left" Margin="63,310,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Top" Height="47" Width="107" TextAlignment="Left" FontSize="15" FontWeight="Bold"/>
+            <Button x:ConnectionId='8' x:Name="btnAddCust" Content="Add Cust" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="25" Canvas.Top="870" HorizontalAlignment="Center" VerticalAlignment="Top"                         />
+            <Button x:ConnectionId='9' x:Name="btnGoBackCustList" Content="Home" Height="52" Width="88" Canvas.Left="25" Canvas.Top="162" VerticalAlignment="Top"                                />
+            <TextBlock Height="95" TextWrapping="Wrap" Text="Library Management System Customers List" Width="548" TextAlignment="Center" FontSize="35" FontWeight="Bold" HorizontalAlignment="Left" Canvas.Left="485" Canvas.Top="10" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Balance" Height="46" Width="118" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="380"/>
+            <TextBox x:ConnectionId='10' x:Name="CustBalanceTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="370" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:ConnectionId='11' x:Name="btnUpdateCust" Content="Update Cust" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="175" Canvas.Top="870" HorizontalAlignment="Center" VerticalAlignment="Top"                            />
+            <Button x:ConnectionId='12' x:Name="btnDeleteCust" Content="Delete Cust" RenderTransformOrigin="2.12,1.344" Width="120" FontWeight="Bold" Canvas.Left="325" Canvas.Top="870"                            />
+            <TextBlock Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="Enter Cust ID to Update/Delete Him" Canvas.Top="912" Width="268" FontWeight="Bold" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='13' x:Name="txtBoxID" Height="33" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="946" Width="268" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Height="25" Canvas.Left="485" TextWrapping="Wrap" Text="The ID of the Selected Cust for Easy Copying" Canvas.Top="919" Width="340" FontWeight="Bold" TextAlignment="Center" FontSize="15" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:ConnectionId='14' x:Name="SelectedCustIdTxt" Height="33" Canvas.Left="485" TextWrapping="Wrap" Text="" Canvas.Top="950" Width="350" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:ConnectionId='15' x:Name="CustNameTxt" Height="53" TextWrapping="Wrap" Text="" Width="166" BorderBrush="#66000000" Canvas.Left="215" Canvas.Top="230"/>
+            <TextBlock TextWrapping="Wrap" Text="Name" Height="47" Width="107" TextAlignment="Left" FontSize="15" FontWeight="Bold" Canvas.Left="63" Canvas.Top="240"/>
+            <ComboBox x:ConnectionId='16' x:Name="comboSort" Width="166" Background="#66F50000" PlaceholderText="Sort By" FontWeight="Bold" Canvas.Left="215" Canvas.Top="162"                                               Height="52" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBoxItem Content="Name A-Z"/>
+                <ComboBoxItem Content="Name Z-A"/>
+                <ComboBoxItem Content="Lowest Balance"/>
+                <ComboBoxItem Content="Highest Balance"/>
+            </ComboBox>
+        </Canvas>
+        <StackPanel x:ConnectionId='3' 
+        x:Name="stack_panel2" 
+        Orientation="Vertical"
+        Background="Cornsilk"
+        Padding="50"
+        HorizontalAlignment="Center" VerticalAlignment="Top" Height="704" Width="534" Margin="483,142,483,154">
+        </StackPanel>
+        <ListView x:ConnectionId='4'
+            x:Name="ListView2" 
+            Header=" Choose a Customer to see the full details"
+                                                         
+            ScrollViewer.HorizontalScrollMode="Enabled" Margin="483,142,483,154" Width="534" Height="704">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Padding="1">
+                        <TextBlock
+                            Text="{Binding Name}"
+                            FontWeight="Black"
+                            />
+                        <TextBlock
+                            Text="{Binding PhoneNumber}"
+                            FontStyle="Italic"
+                            />
+                        <TextBlock
+                                Text="{Binding Balance}"
+                                FontWeight="Black"
+                                Foreground="SpringGreen"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
+

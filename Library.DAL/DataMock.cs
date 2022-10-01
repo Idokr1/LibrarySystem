@@ -1,10 +1,6 @@
 ﻿using Library.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DAL
 {
@@ -17,7 +13,7 @@ namespace Library.DAL
         public ObservableCollection<Book> CurrentlyIssuedBooks { get; set; }
         public ObservableCollection<Journal> CurrentlyIssuedJournals { get; set; }
         public ObservableCollection<Employee> Employees { get; set; }
-        public ObservableCollection<Customer> Customers { get; set; }        
+        public ObservableCollection<Customer> Customers { get; set; }
         public ObservableCollection<Book> BookItemsFiltered { get; set; }
         public ObservableCollection<Journal> JournalItemsFiltered { get; set; }
 
@@ -83,7 +79,7 @@ namespace Library.DAL
             Book.BookGenres.Add("Review");
             Book.BookGenres.Add("Short story");
             Book.BookGenres.Add("Science");
-            Book.BookGenres.Add("Thriller");            
+            Book.BookGenres.Add("Thriller");
 
             var book1 = new Book("Harry Potter and the Goblet of Fire", new DateTime(2001, 4, 8), 25, 0);
             book1.ISBN = "978-96-95002-01-8";
@@ -132,7 +128,7 @@ namespace Library.DAL
             Journal.JournalGenres.Add("Medicine");
             Journal.JournalGenres.Add("Environment");
 
-            var journal1 = new Journal("Nature", new DateTime(1869, 11, 5), 10, 0); 
+            var journal1 = new Journal("Nature", new DateTime(1869, 11, 5), 10, 0);
             journal1.Editor = "John Maddox";
             journal1.Genre = "Science";
             journal1.JournalEditionNumber = 550;
@@ -213,7 +209,7 @@ namespace Library.DAL
 
             var customer3 = new Customer("Tamar", "0525492127");
             customer3.Balance = 100;
-        
+
             Customers.Add(customer1);
             Customers.Add(customer2);
             Customers.Add(customer3);

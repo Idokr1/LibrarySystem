@@ -1,20 +1,11 @@
 ﻿using Library.DAL;
 using Library.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -88,7 +79,7 @@ namespace LibrarySystem
                         string oldPhone = DataMock.Instance.Customers[i].PhoneNumber;
                         double oldBalance = DataMock.Instance.Customers[i].Balance;
                         Guid oldID = DataMock.Instance.Customers[i].ID;
-                        
+
                         string newName, newPhone;
                         double newBalance;
 
@@ -102,7 +93,7 @@ namespace LibrarySystem
                             if (CustPhoneTxt.Text.Length != 10)
                                 throw new PhoneNumberException("A phone number has 10 numbers");
                             newPhone = CustPhoneTxt.Text;
-                        }                            
+                        }
                         else
                             newPhone = oldPhone;
 
@@ -144,9 +135,9 @@ namespace LibrarySystem
                     {
                         DataMock.Instance.Customers.RemoveAt(i);
                         break;
-                    }                        
-                }                    
-            }            
+                    }
+                }
+            }
             catch (FormatException e1)
             {
                 MessageDialog d1 = new MessageDialog(e1.Message);

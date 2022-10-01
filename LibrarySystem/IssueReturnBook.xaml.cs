@@ -1,20 +1,11 @@
 ﻿using Library.DAL;
 using Library.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using static Library.Model.LibraryItem;
 
@@ -132,7 +123,7 @@ namespace LibrarySystem
                 {
                     SelectedBookIdTxt.Text = $"{selectedBook.ID}";
                     SelectedCustIdTxt.Text = $"{selectedBook.LenderID}";
-                    SelectedBookIdTxt.IsReadOnly = true;                    
+                    SelectedBookIdTxt.IsReadOnly = true;
                     SelectedCustIdTxt.IsReadOnly = true;
                     MessageDialog dialog = new MessageDialog(
                     $"Full Details: \nTitle: {selectedBook.Title} \nPublish Date: {selectedBook.PublishDate:Y} \n" +
@@ -184,7 +175,7 @@ namespace LibrarySystem
                                 if (DataMock.Instance.Customers[j].ID == custGuid)
                                 {
                                     if (DataMock.Instance.Customers[j].Balance - DataMock.Instance.BookItems[i].ActualPrice < 0)
-                                        throw new NegativeBalanceException("The customer doesn't have enough balance");                                    
+                                        throw new NegativeBalanceException("The customer doesn't have enough balance");
 
                                     DataMock.Instance.Customers[j].Balance -= DataMock.Instance.BookItems[i].ActualPrice;
                                     var newCustomer = DataMock.Instance.Customers[j];
@@ -199,17 +190,17 @@ namespace LibrarySystem
                                         DataMock.Instance.BookItems[i].isReturnLate = isLate.OnTime;
 
                                     DataMock.Instance.IssuedBooksHistory.Add(DataMock.Instance.BookItems[i]);
-                                    DataMock.Instance.CurrentlyIssuedBooks.Add(DataMock.Instance.BookItems[i]);                                    
+                                    DataMock.Instance.CurrentlyIssuedBooks.Add(DataMock.Instance.BookItems[i]);
                                     DataMock.Instance.BookItems.RemoveAt(i);
                                     DataMock.Instance.Customers.RemoveAt(j);
                                     DataMock.Instance.Customers.Add(newCustomer);
                                     matchIDs = true;
-                                    break;                                    
+                                    break;
                                 }
-                            }                         
+                            }
                         }
                     }
-                    if(matchIDs == false)
+                    if (matchIDs == false)
                         await new MessageDialog("There is no match between those ID's").ShowAsync();
                 }
                 catch (FormatException e1)
@@ -227,7 +218,7 @@ namespace LibrarySystem
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }                       
+            }
         }
         private async void btnReturnBook_Click(object sender, RoutedEventArgs e)
         {
@@ -239,7 +230,7 @@ namespace LibrarySystem
             {
                 try
                 {
-                    bool matchIDs = false;                    
+                    bool matchIDs = false;
                     Guid objGuid = Guid.Empty;
                     Guid custGuid = Guid.Empty;
                     objGuid = Guid.Parse(txtBoxID.Text);
@@ -251,7 +242,7 @@ namespace LibrarySystem
                             if (DateTime.Now > DataMock.Instance.CurrentlyIssuedBooks[i].ReturnDate)
                             {
                                 await new MessageDialog("You returned the book in delay, you will be fined $10").ShowAsync();
-                                for(int j = 0; j < DataMock.Instance.Customers.Count; j++)
+                                for (int j = 0; j < DataMock.Instance.Customers.Count; j++)
                                 {
                                     if (DataMock.Instance.Customers[j].ID == custGuid)
                                     {
@@ -265,23 +256,23 @@ namespace LibrarySystem
                                             DataMock.Instance.Customers.Add(newCustomer);
                                         }
                                     }
-                                }                                
-                            }                            
+                                }
+                            }
                             DataMock.Instance.CurrentlyIssuedBooks[i].LenderName = null;
                             DataMock.Instance.CurrentlyIssuedBooks[i].LenderID = Guid.Empty;
                             DataMock.Instance.CurrentlyIssuedBooks[i].IssueDate = DateTime.MinValue;
                             DataMock.Instance.CurrentlyIssuedBooks[i].ReturnDate = DateTime.MinValue;
                             DataMock.Instance.CurrentlyIssuedBooks[i].isReturnLate = isLate.Default;
                             DataMock.Instance.BookItems.Add(DataMock.Instance.CurrentlyIssuedBooks[i]);
-                            DataMock.Instance.CurrentlyIssuedBooks.RemoveAt(i);                            
+                            DataMock.Instance.CurrentlyIssuedBooks.RemoveAt(i);
                             matchIDs = true;
-                            break;                                                         
+                            break;
                         }
                     }
                     if (matchIDs == false)
                         await new MessageDialog("There is no match between those ID's").ShowAsync();
                 }
-                
+
                 catch (FormatException e1)
                 {
                     MessageDialog d1 = new MessageDialog(e1.Message);
@@ -292,7 +283,7 @@ namespace LibrarySystem
                     MessageDialog d1 = new MessageDialog(e1.Message);
                     d1.ShowAsync();
                 }
-            }            
+            }
         }
         private void comboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

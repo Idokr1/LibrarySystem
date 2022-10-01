@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Model
 {
@@ -17,7 +13,7 @@ namespace Library.Model
         public bool AllowedToAddEmployee { get; set; }
         public bool AllowedToCreateDiscount { get; set; }
         public bool AllowedToAddDeleteItem { get; set; }
-        public bool AllowedToIssueItem { get; set; }        
+        public bool AllowedToIssueItem { get; set; }
 
 
         /// <summary>
